@@ -1,0 +1,16 @@
+{
+    "name": "MyAddon",
+    "description": "ui-ext addons and fiori-app addons",
+
+    "ui-ext": [
+        {
+            "folder": "ui-ext-demo"
+        }
+    ],
+    
+    "fiori-app": [
+        {
+            "folder": "addon-exchange-rate"
+        }
+    ]
+}

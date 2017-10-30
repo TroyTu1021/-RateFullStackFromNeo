@@ -1,0 +1,21 @@
+{
+    "name": "ui.ext.addon.demo",
+    "description": "ui extension for demo",
+    "namespace":"sap.ui.ext.demo",
+
+    "views": [
+        {
+            "uuid": "9b1eb386-3b4e-4570-98e4-4044008cd415",
+            "file": "ORDR_Detail.js",
+            "defaultEnabled": true,
+            "description": "ORDR detail view"
+        },
+
+        {
+            "uuid": "e4917e50-4db8-4d3d-bc57-892fce676ffd",
+            "file": "ORDR_List.js",
+            "defaultEnabled": true,
+            "description": "ORDR list view"
+        }
+    ]
+}
