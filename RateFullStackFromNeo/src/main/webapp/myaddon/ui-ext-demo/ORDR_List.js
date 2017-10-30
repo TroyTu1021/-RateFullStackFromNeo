@@ -67,6 +67,8 @@ define(function() {
 
     return {
         [ onBeforeButtonClickBtnQuickCreateList ]: async function(oInst, ...args) {
+            // hack temporarialy
+            window.__inAutoCreationMode = true;
             await createQuickOrderInListView(oInst);
         },
 

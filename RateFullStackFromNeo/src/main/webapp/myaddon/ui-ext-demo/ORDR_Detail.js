@@ -37,7 +37,6 @@ define(function() {
     const UUID_BTN_GRIDADDLINE = "d818b058-19f6-4d48-b1d4-1479907bd1a5";
 
     let sGlobalDocNum = null;
-    let inUIAPICreationMode = false;
 
     async function sumColumnX(oInst) {
         let iGridSize = await oInst.getGridSize(GRID_RDR1);
@@ -62,13 +61,15 @@ define(function() {
     }
 
     async function submit(oInst, ...args) {
-        if (inUIAPICreationMode === false) {
+        if (!window.__inAutoCreationMode) {
             sGlobalDocNum = await oInst.getFormItemValue(ORDR_DocNum);
 
             let iSumOfX = await sumColumnX(oInst);
             if (iSumOfX > 100) {
                 throw new Error("Validation Failed, Sum of X > 100");
             }
+        } else {
+            window.__inAutoCreationMode = false;
         }
     }
 
@@ -101,34 +102,28 @@ define(function() {
         },
 
         [ onBeforeButtonClickBtnQuickFill ]: async function(oInst, ...args) {
-            if (inUIAPICreationMode === false) {
-                inUIAPICreationMode = true;
+            await oInst.selectFormSection(SECTION_GENERAL);
 
-                await oInst.selectFormSection(SECTION_GENERAL);
+            //add form header
+            await oInst.setFormItemValue(UUID_CardCode, "C26000");
+            await oInst.setFormItemValue(UUID_DocDueDate, "20170901");
 
-                //add form header
-                await oInst.setFormItemValue(UUID_CardCode, "C26000");
-                await oInst.setFormItemValue(UUID_DocDueDate, "20170901");
+            //add order line
+            await wait();
+            await oInst.selectFormSection(SECTION_CONTENTS);
+            await oInst.clickGridButton(UUID_RDR1, UUID_BTN_GRIDADDLINE);
 
-                //add order line
-                await wait();
-                await oInst.selectFormSection(SECTION_CONTENTS);
-                await oInst.clickGridButton(UUID_RDR1, UUID_BTN_GRIDADDLINE);
+            await oInst.openGridChooseFromList(UUID_RDR1, 0, UUID_RDR1_ItemCode);
+            await oInst.selectGridRow(VIEW_OITM_CFL, 1);
+            await oInst.selectGridRow(VIEW_OITM_CFL, 2);
+            await oInst.selectGridRow(VIEW_OITM_CFL, 3);
+            await oInst.selectGridRow(VIEW_OITM_CFL, 4);
 
-                await oInst.openGridChooseFromList(UUID_RDR1, 0, UUID_RDR1_ItemCode);
-                await oInst.selectGridRow(VIEW_OITM_CFL, 1);
-                await oInst.selectGridRow(VIEW_OITM_CFL, 2);
-                await oInst.selectGridRow(VIEW_OITM_CFL, 3);
-                await oInst.selectGridRow(VIEW_OITM_CFL, 4);
+            await oInst.clickButton(UUID_SELECT_BUTTON);
 
-                await oInst.clickButton(UUID_SELECT_BUTTON);
-
-                // await oInst.clickButton(UUID_BTN_CREATE);
-                // console.log(await oInst.getCurrentMessageType());
-                // console.log(await oInst.getCurrentMessageText());
-
-                inUIAPICreationMode = false;
-            }
+            // await oInst.clickButton(UUID_BTN_CREATE);
+            // console.log(await oInst.getCurrentMessageType());
+            // console.log(await oInst.getCurrentMessageText());
         },
         
         [ onAfterButtonClickBtnCreate ]: async function(...args) {
