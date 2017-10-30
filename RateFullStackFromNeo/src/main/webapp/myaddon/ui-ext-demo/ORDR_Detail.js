@@ -82,16 +82,25 @@ define(function() {
         });
     }
 
+    // Event names
+    const onAfterButtonClickBtnCreate = `on${UUID_BTN_CREATE}AfterButtonClick`;
+    const onAfterButtonClickBtnExchangeRate = `on${BTN_EXCHANGE_RATE}AfterButtonClick`;
+    const onBeforeButtonClickBtnQuickFill = `on${UUID_BTN_DETAIL_FILL}BeforeButtonClick`;
+    const onBeforeButtonClickBtnCreate = `on${UUID_BTN_CREATE}BeforeButtonClick`;
+    const onBeforeButtonClickBtnUpdate = `on${UUID_BTN_UPDATE}BeforeButtonClick`;
+    const onChangeTextboxUDFColumnY = `On${UDF_RDR1_Y}Change`;
+    const onChangeTextboxUDFColumnZ = `On${UDF_RDR1_Z}Change`;
+
     return {
-        [ `on${UUID_BTN_CREATE}AfterButtonClick` ]: async function(oInst, ...args) {
+        [ onAfterButtonClickBtnCreate ]: async function(oInst, ...args) {
             await oInst.MessageBox("None", `Order #${sGlobalDocNum} was added`);
         },
 
-        [ `on${BTN_EXCHANGE_RATE}AfterButtonClick` ]: async function(oInst, ...args) {
+        [ onAfterButtonClickBtnExchangeRate ]: async function(oInst, ...args) {
             await oInst.openApp("Exchange-Rate");
         },
 
-        [ `on${UUID_BTN_DETAIL_FILL}BeforeButtonClick` ]: async function(oInst, ...args) {
+        [ onBeforeButtonClickBtnQuickFill ]: async function(oInst, ...args) {
             if (inUIAPICreationMode === false) {
                 inUIAPICreationMode = true;
 
@@ -122,19 +131,19 @@ define(function() {
             }
         },
         
-        [ `on${UUID_BTN_CREATE}BeforeButtonClick` ]: async function(...args) {
+        [ onAfterButtonClickBtnCreate ]: async function(...args) {
             await submit(...args);
         },
 
-        [ `on${UUID_BTN_UPDATE}BeforeButtonClick` ]: async function(...args) {
+        [ onBeforeButtonClickBtnUpdate ]: async function(...args) {
             await submit(...args);
         },
 
-        [ `On${UDF_RDR1_Y}Change` ]: async function(...args) {
+        [ onChangeTextboxUDFColumnY ]: async function(...args) {
             await onColumnValueChange(...args);
         },
         
-        [ `On${UDF_RDR1_Z}Change` ]: async function(...args) {
+        [ onChangeTextboxUDFColumnZ ]: async function(...args) {
             await onColumnValueChange(...args);
         },
 

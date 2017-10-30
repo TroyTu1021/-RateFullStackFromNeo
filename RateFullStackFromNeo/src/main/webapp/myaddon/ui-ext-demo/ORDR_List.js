@@ -62,8 +62,11 @@ define(function() {
         });
     }
 
+    // Event names
+    const onBeforeButtonClickBtnQuickCreateList = `on${BTN_QUICK_CREATE_LIST}BeforeButtonClick`;
+
     return {
-        [ `on${BTN_QUICK_CREATE_LIST}BeforeButtonClick` ]: async function(oInst, ...args) {
+        [ onBeforeButtonClickBtnQuickCreateList ]: async function(oInst, ...args) {
             await createQuickOrderInListView(oInst);
         },
 
