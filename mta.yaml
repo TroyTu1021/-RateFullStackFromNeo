@@ -1,0 +1,33 @@
+ID: MTAdemo
+_schema-version: '2.0'
+version: 0.0.1
+
+modules:
+ - name: RateFullStackFromNeo
+   type: java
+   path: RateFullStackFromNeo
+   parameters:
+      memory: 512M
+   provides:
+    - name: RateFullStackFromNeo_api
+      properties:
+         url: ${default-url}
+   requires:
+    - name: hdi_hanadb
+      properties:
+         JBP_CONFIG_RESOURCE_CONFIGURATION: '[tomcat/webapps/ROOT/META-INF/context.xml:
+            {"service_name_for_DefaultDB" : "~{hdi-container-name}"}]'
+
+ 
+
+
+ 
+
+
+ 
+
+resources:
+ - name: hdi_hanadb
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
