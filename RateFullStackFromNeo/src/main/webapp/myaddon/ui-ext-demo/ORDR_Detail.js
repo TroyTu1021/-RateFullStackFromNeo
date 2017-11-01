@@ -37,6 +37,7 @@ define(function() {
     const UUID_BTN_GRIDADDLINE = "d818b058-19f6-4d48-b1d4-1479907bd1a5";
 
     let sGlobalDocNum = null;
+    let iSumOfValue = 0;
 
     async function sumColumnX(oInst) {
         let iGridSize = await oInst.getGridSize(GRID_RDR1);
@@ -44,6 +45,7 @@ define(function() {
         for (let i = 0; i < iGridSize; i++) {
             iSumOfX += Number.parseInt(await oInst.getGridItemValue(GRID_RDR1, UDF_RDR1_X, i) || 0);
         }
+        iSumOfValue = iSumOfX;
         return iSumOfX;
     }
     
@@ -62,10 +64,11 @@ define(function() {
 
     async function submit(oInst, ...args) {
         if (!window.__inAutoCreationMode) {
-            sGlobalDocNum = await oInst.getFormItemValue(ORDR_DocNum);
+            // sGlobalDocNum = await oInst.getFormItemValue(ORDR_DocNum);
 
-            let iSumOfX = await sumColumnX(oInst);
-            if (iSumOfX > 100) {
+            // let iSumOfX = await sumColumnX(oInst);
+            if (iSumOfValue > 100) {
+                oInst.setPreventDefault(true);
                 throw new Error("Validation Failed, Sum of X > 100");
             }
         } else {
@@ -84,17 +87,21 @@ define(function() {
     }
 
     // Event names
-    const onAfterButtonClickBtnCreate = `on${UUID_BTN_CREATE}AfterButtonClick`;
-    const onAfterButtonClickBtnExchangeRate = `on${BTN_EXCHANGE_RATE}AfterButtonClick`;
-    const onBeforeButtonClickBtnQuickFill = `on${UUID_BTN_DETAIL_FILL}BeforeButtonClick`;
     const onBeforeButtonClickBtnCreate = `on${UUID_BTN_CREATE}BeforeButtonClick`;
     const onBeforeButtonClickBtnUpdate = `on${UUID_BTN_UPDATE}BeforeButtonClick`;
+    const onAfterButtonClickBtnExchangeRate = `on${BTN_EXCHANGE_RATE}AfterButtonClick`;
+    const onBeforeButtonClickBtnQuickFill = `on${UUID_BTN_DETAIL_FILL}BeforeButtonClick`;
     const onChangeTextboxUDFColumnY = `On${UDF_RDR1_Y}Change`;
     const onChangeTextboxUDFColumnZ = `On${UDF_RDR1_Z}Change`;
 
     return {
-        [ onAfterButtonClickBtnCreate ]: async function(oInst, ...args) {
-            await oInst.MessageBox("None", `Order #${sGlobalDocNum} was added`);
+        [ onBeforeButtonClickBtnCreate ]: async function(oInst, ...args) {
+            // await oInst.MessageBox("None", `Order #${sGlobalDocNum} was added`);
+            await submit(oInst, ...args);
+        },
+
+        [ onBeforeButtonClickBtnUpdate ]: async function(...args) {
+            await submit(oInst, ...args);
         },
 
         [ onAfterButtonClickBtnExchangeRate ]: async function(oInst, ...args) {
@@ -124,14 +131,6 @@ define(function() {
             // await oInst.clickButton(UUID_BTN_CREATE);
             // console.log(await oInst.getCurrentMessageType());
             // console.log(await oInst.getCurrentMessageText());
-        },
-        
-        [ onAfterButtonClickBtnCreate ]: async function(...args) {
-            await submit(...args);
-        },
-
-        [ onBeforeButtonClickBtnUpdate ]: async function(...args) {
-            await submit(...args);
         },
 
         [ onChangeTextboxUDFColumnY ]: async function(...args) {
