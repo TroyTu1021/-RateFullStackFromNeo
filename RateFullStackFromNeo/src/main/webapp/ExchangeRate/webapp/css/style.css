@@ -1,0 +1,58 @@
+.B1FioriApp .myCustomText {
+    font-weight: bold;
+}
+
+.header-nav-back {
+    position: absolute;
+    left: 0;
+}
+
+.header-refresh {
+    position: absolute;
+    right: 0;
+}
+
+.header-title {
+    font-size: 17px;
+    color: #4d5463 !important;
+    margin: auto !important;
+}
+
+.sapuiVltCell {
+    text-align: center;
+}
+
+.loginButton {
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.logoIcon {
+    font-size: 6rem;
+    color: #2e5f88;
+    padding-bottom: 2rem;
+}
+
+.sapMBtnInner {
+    font-size: 1rem;
+    font-weight: bolder;
+    color: #ffffff;
+    background-color: #427cac;
+}
+
+.sapUiContentPadding {
+    margin-top: 1.5rem;
+}
+
+.sapMBtn:hover>.sapMBtnHoverable {
+    background-color: #437cac;
+}
+
+.loginForm {
+    width: 40%;
+    margin-top: 6%;
+}
+
+.sapMPage {
+    text-align: center;
+}

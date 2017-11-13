@@ -1,0 +1,150 @@
+{
+	"_version": "1.4.0",
+
+	"sap.app": {
+		"id": "addon",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"apiToken": "a27b0361f160d2ffaa696c51851b2793",
+		"serviceUrl": "https://slcdemo.cfapps.sap.hana.ondemand.com",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {}
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_bluecrystal",
+			"sap_belize"
+		]
+	},
+
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "addon.view.App",
+			"type": "XML",
+			"id": "app"
+		},
+
+		"dependencies": {
+			"minUI5Version": "1.42.0",
+			"libs": {
+				"sap.ui.core": {
+					"minVersion": "1.42.0"
+				},
+				"sap.m": {
+					"minVersion": "1.42.0"
+				},
+				"sap.ushell": {
+					"minVersion": "1.42.0"
+				},
+				"sap.collaboration": {
+					"minVersion": "1.42",
+					"lazy": true
+				}
+			}
+		},
+
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "addon.i18n.i18n"
+				}
+			}
+		},
+
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "addon.view",
+				"controlId": "idAppControl",
+				"controlAggregation": "detailPages",
+				"bypassed": {
+					"target": ["master", "notFound"]
+				},
+				"async": true
+			},
+
+			"routes": [{
+				"pattern": "",
+				"name": "login",
+				"target": "login"
+			}, {
+				"pattern": "rate",
+				"name": "rate",
+				"target": ["object", "rate"]
+			}, {
+				"pattern": "Orders/{objectId}",
+				"name": "object",
+				"target": ["master", "object"]
+			}],
+
+			"targets": {
+				"login": {
+					"viewName": "Login",
+					"viewLevel": 1,
+					"viewId": "login"
+				},
+				"master": {
+					"viewName": "Master",
+					"viewLevel": 2,
+					"viewId": "master",
+					"controlAggregation": "masterPages"
+				},
+					"rate": {
+					"viewName": "Rate",
+					"viewLevel": 2,
+					"viewId": "rate"
+				},
+				"object": {
+					"viewName": "Detail",
+					"viewId": "detail",
+					"viewLevel": 3
+				},
+				"detailObjectNotFound": {
+					"viewName": "DetailObjectNotFound",
+					"viewId": "detailObjectNotFound"
+				},
+				"detailNoObjectsAvailable": {
+					"viewName": "DetailNoObjectsAvailable",
+					"viewId": "detailNoObjectsAvailable"
+				},
+				"notFound": {
+					"viewName": "NotFound",
+					"viewId": "notFound"
+				}
+			}
+		}
+	}
+}

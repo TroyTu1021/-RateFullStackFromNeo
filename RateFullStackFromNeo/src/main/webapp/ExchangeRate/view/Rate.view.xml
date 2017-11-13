@@ -1,0 +1,70 @@
+<mvc:View controllerName="addon.controller.Rate" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<App>
+		<pages>
+			<Page title="ExchangeRate">
+				<content>
+					<VBox direction="Column" id="vbox0" justifyContent="Center" width="100%">
+						<items>
+							<Label id="label3" text="Try out the Layout Editor and then click Run." textAlign="Center" width="100%"/>
+						</items>
+					</VBox>
+				<Table id="table0" noDataText="Drop column list items here and columns in the area above">
+						<columns>
+							<Column id="column0">
+								<header>
+									<Label id="label0" text="Code"/>
+								</header>
+							</Column>
+							<Column id="column1">
+								<header>
+									<Label id="label1" text="Name"/>
+								</header>
+							</Column>
+							<Column id="column2">
+								<header>
+									<Label id="label2" text="Rate"/>
+								</header>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem counter="0" id="item1">
+								<cells>
+									<Text id="1" maxLines="0" text=""/>
+									<Text id="2" maxLines="0" text=""/>
+									<Text id="3" maxLines="0" text=""/>
+								</cells>
+							</ColumnListItem>
+							<ColumnListItem counter="0" id="item2">
+								<cells>
+									<Text id="4" maxLines="0" text=""/>
+									<Text id="5" maxLines="0" text=""/>
+									<Text id="6" maxLines="0" text=""/>
+								</cells>
+							</ColumnListItem>
+							<ColumnListItem counter="0" id="item3">
+								<cells>
+									<Text id="7" maxLines="0" text=""/>
+									<Text id="8" maxLines="0" text=""/>
+									<Text id="9" maxLines="0" text=""/>
+								</cells>
+							</ColumnListItem>
+							<ColumnListItem counter="0" id="item4">
+								<cells>
+									<Text id="10" maxLines="0" text=""/>
+									<Text id="11" maxLines="0" text=""/>
+									<Text id="12" maxLines="0" text=""/>
+								</cells>
+							</ColumnListItem>
+						</items>
+			
+					
+					
+					</Table>
+					<Button text="Get Latest exchange rate" press="onPressCheck"></Button>
+					<Button text="Get System exchange rate" press="GetSL"></Button>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

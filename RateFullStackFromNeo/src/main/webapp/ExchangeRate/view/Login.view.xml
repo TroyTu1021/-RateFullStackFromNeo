@@ -1,0 +1,19 @@
+<mvc:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" controllerName="addon.controller.Login">
+	<Page showHeader="false">
+		<l:VerticalLayout class="sapUiContentPadding loginForm" width="50%">
+			<l:content>
+				<core:Icon id="loginPageLogo" class="logoIcon" src="sap-icon://cloud"/>
+				<Input id="companyDBInput" class="sapUiSmallMarginBottom" type="Text" placeholder="Company Database"
+					valueStateText="User Name must not be empty. Maximum 20 characters."
+					value="{ path : 'data>/companyDB', type : 'sap.ui.model.type.String', constraints : { minLength: 1, maxLength: 20 } }"/>
+				<Input id="userNameInput" class="sapUiSmallMarginBottom" type="Text" placeholder="User Name"
+					valueStateText="User Name must not be empty. Maximum 20 characters."
+					value="{ path : 'data>/userName', type : 'sap.ui.model.type.String', constraints : { minLength: 1, maxLength: 20 } }"/>
+				<Input id="passwordInput" class="sapUiSmallMarginBottom" type="Password" placeholder="Password"
+					valueStateText="Password must not be empty. Maximum 20 characters."
+					value="{ path : 'data>/password', type : 'sap.ui.model.type.String', constraints : { minLength: 1, maxLength: 20 } }"/>
+				<Button class="loginButton" text="LOG IN" press="onLogin"/>
+			</l:content>
+		</l:VerticalLayout>
+	</Page>
+</mvc:View>

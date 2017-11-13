@@ -1,0 +1,4 @@
+<mvc:View controllerName="addon.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" busy="{appView>/busy}"
+	busyIndicatorDelay="{appView>/delay}" xmlns="sap.m">
+	<SplitApp class="B1FioriApp" id="idAppControl"/>
+</mvc:View>
