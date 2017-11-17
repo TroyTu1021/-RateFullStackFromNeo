@@ -1,6 +1,6 @@
 define(function() {
 
-    const VIEW_ORDR_LIST = "e4917e50-4db8-4d3d-bc57-892fce676ffd";
+    const VIEW_ORDR_LIST = "fdbe3da4-26bc-4d65-a114-80960cbcefc2";
     const BTN_CLOSE_LIST = "1b654259-ffeb-420b-883c-287cab3151f7";
     const BTN_CREATE_LIST = "bff01f98-5c5e-49b6-8ce4-7b90d875f904";
     const BTN_QUICK_CREATE_LIST = "uuid_quick_create";
@@ -27,13 +27,13 @@ define(function() {
         await oInst.setFormItemValue(HEADER_CardCode, "C26000");
 
         //check the CardName (it will be automatically filled by onchange proc)
-        //if (await oInst.getFormItemValue(HEADER_CardName) !== "River Inc") {
-          //throw Error("Validation failed: wrong card name");
-        //}
-        
-        if (await oInst.getFormItemValue(HEADER_CardName) !== null) {
+        if (await oInst.getFormItemValue(HEADER_CardName) !== "River Inc") {
             throw Error("Validation failed: wrong card name");
         }
+        
+        // if (await oInst.getFormItemValue(HEADER_CardName) !== null) {
+            // throw Error("Validation failed: wrong card name");
+        // }
         await oInst.setFormItemValue(HEADER_DocDueDate, "20170922");
 
         await wait();
@@ -42,8 +42,8 @@ define(function() {
 
         await oInst.openGridChooseFromList(UUID_RDR1, 0, UUID_RDR1_ItemCode);
         // await oInst.selectGridRow(VIEW_OITM_CFL, 0);
-        await oInst.selectGridRow(VIEW_OITM_CFL, 1);
         await oInst.selectGridRow(VIEW_OITM_CFL, 2);
+        await oInst.selectGridRow(VIEW_OITM_CFL, 3);
         // await oInst.invertSelectGridRow(VIEW_OITM_CFL, 1);
         await oInst.clickButton(UUID_SELECT_BUTTON);
 
@@ -77,7 +77,7 @@ define(function() {
                 position: `after:${BTN_CLOSE_LIST}`,
                 data: {
                     $tag: "button",
-                    label: "Quick Create (UIAPI)",
+                    text: "Quick Create (UIAPI)",
                     uuid: BTN_QUICK_CREATE_LIST
                 }
             }

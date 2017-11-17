@@ -121,10 +121,10 @@ define(function() {
             await oInst.clickGridButton(UUID_RDR1, UUID_BTN_GRIDADDLINE);
 
             await oInst.openGridChooseFromList(UUID_RDR1, 0, UUID_RDR1_ItemCode);
-            await oInst.selectGridRow(VIEW_OITM_CFL, 1);
             await oInst.selectGridRow(VIEW_OITM_CFL, 2);
             await oInst.selectGridRow(VIEW_OITM_CFL, 3);
-            await oInst.selectGridRow(VIEW_OITM_CFL, 4);
+            // await oInst.selectGridRow(VIEW_OITM_CFL, 3);
+            // await oInst.selectGridRow(VIEW_OITM_CFL, 4);
 
             await oInst.clickButton(UUID_SELECT_BUTTON);
 

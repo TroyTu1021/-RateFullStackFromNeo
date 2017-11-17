@@ -1,0 +1,91 @@
+<mvc:View
+	controllerName="sap.ui.demo.exchangerate.controller.ExchangeRate"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<semantic:SemanticPage
+		id="page"
+		headerPinnable="false"
+		toggleHeaderOnTitleClick="false">
+
+		<semantic:titleHeading>
+			<Title text="{i18n>exchangerateTitle}" />
+		</semantic:titleHeading>
+
+		<semantic:content>
+			<VBox>
+			<Table
+				id="table"
+				mode="MultiSelect"
+				width="auto"
+				items="{/}"
+				noDataText="{exchangerateView>/tableNoDataText}"
+				busyIndicatorDelay="{exchangerateView>/tableBusyDelay}"
+				growing="true"
+				growingScrollToLoad="true"
+				updateFinished="onUpdateFinished">
+
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="{exchangerateView>/exchangerateTableTitle}"/> 
+						<Text text="" id="today" />
+						<ToolbarSpacer />
+					</Toolbar>
+				</headerToolbar>
+
+				<columns>
+					<Column id="CurrencyCode">
+						<Text text="{i18n>Currency Code}" id="CurrencyCodeColumnTitle"/>
+					</Column>
+					<Column id="unitNameColumn">
+						<Text text="{i18n>Name}" id="NameColumnTitle"/>
+					</Column>
+					<Column id="RateColumn" hAlign="Right">
+						<Text text="{i18n>Rate}" id="RateColumnTitle"/>
+					</Column>
+					<Column id="Arrow" hAlign="Right" visible="false">
+						<Text text=" " id="ArrowText"/>
+					</Column>
+					<Column id="LatestRateColumn" hAlign="Right" visible="false">
+						<Text text="{i18n>Latest Rate}" id="LatestRateColumnTitle"/>
+					</Column>
+				</columns>
+			<items>
+				<ColumnListItem vAlign="Middle" type="Active">
+					<cells>
+						<Text text="{CurrencyCode}" wrapping="false"/>
+						<Text text="{Name}" wrapping="false"/>
+						<ObjectNumber
+								number="{
+									path: 'Rate',
+									formatter: '.formatter.numberUnit'
+								}"
+								/>
+						<ObjectIdentifier title=" to " />
+						<ObjectIdentifier title="{latestExchangeRate}" />
+					</cells>
+				</ColumnListItem>
+			</items>
+			</Table>
+			<Button text="Get Latest exchange rate" press="onPressCheck"></Button>
+			<Button text="update" press="onPressUpdate"></Button>
+		</VBox>
+		</semantic:content>
+
+		<!--<semantic:sendEmailAction>-->
+			<!--<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>-->
+		<!--</semantic:sendEmailAction>-->
+
+		<!--<semantic:shareInJamAction>-->
+			<!--<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>-->
+		<!--</semantic:shareInJamAction>-->
+
+		<!--<semantic:saveAsTileAction>-->
+			<!--<footerbar:AddBookmarkButton id ="shareTile" title="{exchangerateView>/saveAsTileTitle}" />-->
+		<!--</semantic:saveAsTileAction>-->
+
+	</semantic:SemanticPage>
+
+</mvc:View>

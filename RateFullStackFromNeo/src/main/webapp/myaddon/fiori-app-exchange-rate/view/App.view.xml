@@ -1,0 +1,11 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	controllerName="sap.ui.demo.exchangerate.controller.App"
+	displayBlock="true"
+	xmlns="sap.m">
+
+	<App id="app"
+		 busy="false"
+		 busyIndicatorDelay="{appView>/delay}"/>
+
+</mvc:View>
