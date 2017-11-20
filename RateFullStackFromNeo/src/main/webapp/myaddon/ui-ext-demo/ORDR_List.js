@@ -9,6 +9,7 @@ define(function() {
     const HEADER_CardCode = "52709261-0eec-4e71-a9fd-7fff3a142750";
     const HEADER_CardName = "47235d8f-dfd6-4f25-9c5c-32225bf01f2e";
     const HEADER_DocDueDate = "0ddd3f85-c8b8-41de-86be-05623195eb28";
+    const HEADER_DocType = "e55b70b2-aa50-4fb4-95f7-3fc99c5af2a1";
 
     // Grid
     const UUID_RDR1 = "b5695427-62ce-40fd-9801-e4b6bbf9d37e";
@@ -38,6 +39,7 @@ define(function() {
 
         await wait();
         await oInst.selectFormSection(SECTION_CONTENTS);
+        await oInst.setFormItemValue(HEADER_DocType, "I");
         await oInst.clickGridButton(UUID_RDR1, UUID_BTN_GRIDADDLINE);
 
         await oInst.openGridChooseFromList(UUID_RDR1, 0, UUID_RDR1_ItemCode);

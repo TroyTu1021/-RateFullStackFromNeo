@@ -118,6 +118,7 @@ define(function() {
             //add order line
             await wait();
             await oInst.selectFormSection(SECTION_CONTENTS);
+            await oInst.setFormItemValue(HEADER_DocType, "I");
             await oInst.clickGridButton(UUID_RDR1, UUID_BTN_GRIDADDLINE);
 
             await oInst.openGridChooseFromList(UUID_RDR1, 0, UUID_RDR1_ItemCode);
