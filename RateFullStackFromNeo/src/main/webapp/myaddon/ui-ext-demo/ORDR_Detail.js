@@ -146,7 +146,7 @@ define(function() {
             {
                 position: `after:${SECTION_ATTACHMENT}`,
                 data: {
-                    $tag: "section",
+                    $tag: "subsection",
                     $children: [{
                         $tag: "group",
                         $children: [{
