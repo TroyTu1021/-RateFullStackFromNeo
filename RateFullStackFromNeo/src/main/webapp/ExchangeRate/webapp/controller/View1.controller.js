@@ -84,10 +84,10 @@ sap.ui.define([
 			Currencys[0] = "EUR";
 			Currencys[1] = "CAN";
 			//Currencys[0] = "USD";
-			//Currencys[1] = "GBP";
-			//Currencys[2] = "ILS";
+			Currencys[2] = "GBP";
+			Currencys[3] = "ILS";
 			//Currencys[3] = "CAD";
-			var date = "20171107";
+			var date = "20171121";
 			var j=1;
 			var x;
 		//	var para;
