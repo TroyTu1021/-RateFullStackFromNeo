@@ -118,8 +118,8 @@ define(function() {
             //add order line
             await wait();
             await oInst.selectFormSection(SECTION_CONTENTS);
-            await oInst.setFormItemValue(HEADER_DocType, "I");
-            await oInst.clickGridButton(UUID_RDR1, UUID_BTN_GRIDADDLINE);
+            // await oInst.setFormItemValue(HEADER_DocType, "I");
+            // await oInst.clickGridButton(UUID_RDR1, UUID_BTN_GRIDADDLINE);
 
             await oInst.openGridChooseFromList(UUID_RDR1, 0, UUID_RDR1_ItemCode);
             await oInst.selectGridRow(VIEW_OITM_CFL, 2);
@@ -192,7 +192,7 @@ define(function() {
                 position: `after:${UUID_BTN_DETAIL_PRINT}`,
                 data: {
                     $tag: "button",
-                    label: "Quick Fill Order (UIAPI)",
+                    text: "Quick Fill Order (UIAPI)",
                     uuid: UUID_BTN_DETAIL_FILL,
                     visibleUpdateMode: "false",
                     visibleViewMode: "false"

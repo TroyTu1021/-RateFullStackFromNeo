@@ -2,7 +2,7 @@ define(function() {
 
     const VIEW_ORDR_LIST = "fdbe3da4-26bc-4d65-a114-80960cbcefc2";
     const BTN_CLOSE_LIST = "1b654259-ffeb-420b-883c-287cab3151f7";
-    const BTN_CREATE_LIST = "bff01f98-5c5e-49b6-8ce4-7b90d875f904";
+    const BTN_CREATE_LIST = "827cacb4-0758-4c3a-bdae-7a7d6f367afe";
     const BTN_QUICK_CREATE_LIST = "uuid_quick_create";
 
     // Header
@@ -39,8 +39,8 @@ define(function() {
 
         await wait();
         await oInst.selectFormSection(SECTION_CONTENTS);
-        await oInst.setFormItemValue(HEADER_DocType, "I");
-        await oInst.clickGridButton(UUID_RDR1, UUID_BTN_GRIDADDLINE);
+        // await oInst.setFormItemValue(HEADER_DocType, "I");
+        // await oInst.clickGridButton(UUID_RDR1, UUID_BTN_GRIDADDLINE);
 
         await oInst.openGridChooseFromList(UUID_RDR1, 0, UUID_RDR1_ItemCode);
         // await oInst.selectGridRow(VIEW_OITM_CFL, 0);

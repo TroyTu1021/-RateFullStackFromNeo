@@ -74,8 +74,8 @@ sap.ui.define([
 				text.setText("");
 			}
 			
-			var url = "https://localhost:8443/OdataProxy/OdataServlet/SBOBobService_GetCurrencyRate";
-			//var url = "https://10.58.8.54:8888/OdataProxy/OdataServlet/SBOBobService_GetCurrencyRate";
+			//var url = "https://localhost:8443/OdataProxy/OdataServlet/SBOBobService_GetCurrencyRate";
+			var url = "https://10.58.8.54:8888/OdataProxy/OdataServlet/SBOBobService_GetCurrencyRate";
 			//var url = "https://slcdemo.cfapps.sap.hana.ondemand.com/api_poc/api/b1s/v1/SBOBobService_GetCurrencyRate";
 			//var slurl = "https://slcdemo.cfapps.sap.hana.ondemand.com/api_poc/api/b1s/v1/Login";
 			//var Currencys= "EUR";
@@ -87,7 +87,7 @@ sap.ui.define([
 			Currencys[2] = "GBP";
 			Currencys[3] = "ILS";
 			//Currencys[3] = "CAD";
-			var date = "20171121";
+			var date = "20171107";
 			var j=1;
 			var x;
 		//	var para;
