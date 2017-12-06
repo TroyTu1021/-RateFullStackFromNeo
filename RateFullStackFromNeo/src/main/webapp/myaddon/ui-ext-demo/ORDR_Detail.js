@@ -146,15 +146,18 @@ define(function() {
             {
                 position: `after:${SECTION_ATTACHMENT}`,
                 data: {
-                    $tag: "subsection",
+                    $tag: "section",
                     $children: [{
-                        $tag: "group",
+                        $tag: "subsection",
                         $children: [{
-                            $tag: "button",
-                            label: "Goto ExchangeRate",
-                            uuid: "EXCHANGE_RATE"
-                        }],
-                        label: "Here is misc"
+                            $tag: "group",
+                            $children: [{
+                                $tag: "button",
+                                text: "Goto ExchangeRate",
+                                uuid: "EXCHANGE_RATE"
+                            }],
+                            label: "Here is misc"
+                        }]
                     }],
                     label: "Misc",
                 }
